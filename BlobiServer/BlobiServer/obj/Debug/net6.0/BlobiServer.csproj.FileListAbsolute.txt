@@ -1,0 +1,17 @@
+E:\Projects\blobi-game\BlobiServer\BlobiServer\bin\Debug\net6.0\BlobiServer.exe
+E:\Projects\blobi-game\BlobiServer\BlobiServer\bin\Debug\net6.0\BlobiServer.deps.json
+E:\Projects\blobi-game\BlobiServer\BlobiServer\bin\Debug\net6.0\BlobiServer.runtimeconfig.json
+E:\Projects\blobi-game\BlobiServer\BlobiServer\bin\Debug\net6.0\BlobiServer.dll
+E:\Projects\blobi-game\BlobiServer\BlobiServer\bin\Debug\net6.0\ref\BlobiServer.dll
+E:\Projects\blobi-game\BlobiServer\BlobiServer\bin\Debug\net6.0\BlobiServer.pdb
+E:\Projects\blobi-game\BlobiServer\BlobiServer\bin\Debug\net6.0\LiteNetLib.dll
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.csproj.AssemblyReference.cache
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.AssemblyInfoInputs.cache
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.AssemblyInfo.cs
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.csproj.CoreCompileInputs.cache
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.csproj.CopyComplete
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.dll
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\ref\BlobiServer.dll
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.pdb
+E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.genruntimeconfig.cache

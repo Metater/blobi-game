@@ -1,0 +1,10 @@
+E:\Projects\blobi-game\Blobi\Assets\BlobiShared\Debug\netstandard2.1\BlobiShared.deps.json
+E:\Projects\blobi-game\Blobi\Assets\BlobiShared\Debug\netstandard2.1\BlobiShared.dll
+E:\Projects\blobi-game\Blobi\Assets\BlobiShared\Debug\netstandard2.1\BlobiShared.pdb
+E:\Projects\blobi-game\BlobiServer\BlobiShared\obj\Debug\netstandard2.1\BlobiShared.csproj.AssemblyReference.cache
+E:\Projects\blobi-game\BlobiServer\BlobiShared\obj\Debug\netstandard2.1\BlobiShared.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\blobi-game\BlobiServer\BlobiShared\obj\Debug\netstandard2.1\BlobiShared.AssemblyInfoInputs.cache
+E:\Projects\blobi-game\BlobiServer\BlobiShared\obj\Debug\netstandard2.1\BlobiShared.AssemblyInfo.cs
+E:\Projects\blobi-game\BlobiServer\BlobiShared\obj\Debug\netstandard2.1\BlobiShared.csproj.CoreCompileInputs.cache
+E:\Projects\blobi-game\BlobiServer\BlobiShared\obj\Debug\netstandard2.1\BlobiShared.dll
+E:\Projects\blobi-game\BlobiServer\BlobiShared\obj\Debug\netstandard2.1\BlobiShared.pdb
