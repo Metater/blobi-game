@@ -15,3 +15,5 @@ E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.dll
 E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\ref\BlobiServer.dll
 E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.pdb
 E:\Projects\blobi-game\BlobiServer\BlobiServer\obj\Debug\net6.0\BlobiServer.genruntimeconfig.cache
+E:\Projects\blobi-game\BlobiServer\BlobiServer\bin\Debug\net6.0\BlobiShared.dll
+E:\Projects\blobi-game\BlobiServer\BlobiServer\bin\Debug\net6.0\BlobiShared.pdb

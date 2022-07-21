@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BlobiShared
+namespace BlobiShared.Packets
 {
     public class PrintPacket
     {

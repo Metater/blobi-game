@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "BlobiServer/1.0.0": {
         "dependencies": {
-          "LiteNetLib": "0.9.5.2"
+          "LiteNetLib": "0.9.5.2",
+          "BlobiShared": "1.0.0.0"
         },
         "runtime": {
           "BlobiServer.dll": {}
@@ -17,6 +18,14 @@
       "LiteNetLib/0.9.5.2": {
         "runtime": {
           "lib/netcoreapp3.1/LiteNetLib.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "BlobiShared/1.0.0.0": {
+        "runtime": {
+          "BlobiShared.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -36,6 +45,11 @@
       "sha512": "sha512-pTtvQuD62Amp5tn/8Y2OAXEoBFALreNunViNnX3xiRugr6Yw+iu342m15hAxItLwbiuCuDBRrn75rdH9SsfOUw==",
       "path": "litenetlib/0.9.5.2",
       "hashPath": "litenetlib.0.9.5.2.nupkg.sha512"
+    },
+    "BlobiShared/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

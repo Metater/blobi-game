@@ -1,36 +1,37 @@
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-
+using System.Text;
+using System.Threading.Tasks;
+using BlobiShared.Packets;
 using LiteNetLib;
 using LiteNetLib.Utils;
 
-using BlobiShared.Packets;
+namespace BlobiServer;
 
 public class BlobiNet : INetEventListener
 {
-    public NetManager Client { get; private set; }
+    public NetManager Server { get; private set; }
     public NetPacketProcessor Processor { get; private set; }
 
     public BlobiNet()
     {
-        Client = new(this);
+        Server = new(this);
         Processor = new();
 
         #region Processors
-        Processor.SubscribeReusable<PrintPacket>(p =>
-        {
-            Debug.Log($"{p.Message}");
-        });
+
         #endregion Processors
+
+        Server.Start(8080);
     }
 
     #region NetEvents
     public void OnConnectionRequest(ConnectionRequest request)
     {
-        
+        request.AcceptIfKey("ConnectionKey");
     }
 
     public void OnNetworkError(IPEndPoint endPoint, SocketError socketError)
@@ -56,19 +57,29 @@ public class BlobiNet : INetEventListener
 
     public void OnPeerConnected(NetPeer peer)
     {
-        Debug.Log("Connected!");
+        Console.WriteLine($"Peer {peer.Id}: Connected!");
+
+        Send(peer, new PrintPacket
+        {
+            Message = "Hello, Client!"
+        }, DeliveryMethod.ReliableOrdered);
     }
 
     public void OnPeerDisconnected(NetPeer peer, DisconnectInfo disconnectInfo)
     {
-        Debug.Log("Disconnected!");
+        Console.WriteLine($"Peer {peer.Id}: Disconnected!");
     }
     #endregion NetEvents
 
     #region Sending
-    public void Send<T>(T packet, DeliveryMethod deliveryMethod) where T : class, new()
+    public void Send<T>(NetPeer peer, T packet, DeliveryMethod deliveryMethod) where T : class, new()
     {
-        Client.FirstPeer.Send(Processor.Write(packet), deliveryMethod);
+        peer.Send(Processor.Write(packet), deliveryMethod);
+    }
+
+    public void SendToAll<T>(T packet, DeliveryMethod deliveryMethod) where T : class, new()
+    {
+        Server.SendToAll(Processor.Write(packet), deliveryMethod);
     }
     #endregion Sending
 }

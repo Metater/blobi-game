@@ -718,7 +718,7 @@ namespace LiteNetLib.Utils
             }
             return true;
         }
-
+        
         /// <summary>
         /// Serialize object to NetDataWriter (fast)
         /// </summary>
