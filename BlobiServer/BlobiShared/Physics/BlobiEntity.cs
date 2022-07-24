@@ -7,6 +7,8 @@ namespace BlobiShared.Physics
 {
     public class BlobiEntity
     {
+        private readonly BlobiWorld world;
+
         public uint Id { get; private set; }
         public Vector2 Position { get; private set; }
         public Vector2 Velocity { get; private set; } = Vector2.Zero;
@@ -19,19 +21,23 @@ namespace BlobiShared.Physics
         public BlobiAABB Bounds { get; private set; }
         public float BoundedCollisionElasticity { get; private set; }
 
-        public bool HasVelocityEpsilon { get; private set; } = true;
-        public float VelocityEpsilon { get; private set; } = 1f / 12f;
+        public bool HasVelocityEpsilon { get; private set; } = false;
+        public float VelocityEpsilon { get; private set; }
 
         public bool HasDrag { get; private set; } = false;
         public float DragForce { get; private set; }
 
-        public BlobiEntity(uint id, Vector2 position, float circleRadius)
+        public bool IsSleeping { get; private set; } = false;
+
+        public BlobiEntity(BlobiWorld world, uint id, Vector2 position, float circleRadius)
         {
+            this.world = world;
+
             Id = id;
             Position = position;
             Circle = new BlobiCircle(Vector2.Zero, circleRadius);
 
-            //CurrentCellIndex = 
+            CurrentCellIndex = world.GetIndexAtPosition(position);
         }
 
         #region Builder Methods
@@ -56,26 +62,37 @@ namespace BlobiShared.Physics
         }
         #endregion Builder Methods
 
-        public void AddForce(Vector2 force, float deltaTime)
+        public void SetSleeping(bool state)
+        {
+            IsSleeping = state;
+        }
+        public void AddForce(Vector2 force, float deltaTime = 1)
         {
             Velocity += force * new Vector2(deltaTime);
         }
-        public bool Tick(float deltaTime, out uint nextCellIndex)
+        public bool Tick(float deltaTime, out uint lastCellIndex, out uint nextCellIndex)
         {
-            ApplyVelocityEpsilon();
-
-            if (Velocity != Vector2.Zero && Move(deltaTime))
+            if (!IsSleeping)
             {
-                ApplyDrag(deltaTime);
                 ApplyVelocityEpsilon();
 
+                if (Velocity != Vector2.Zero && Move(deltaTime))
+                {
+                    ApplyDrag(deltaTime);
 
-                // Moved
-                // compare cell indicies
-
+                    nextCellIndex = world.GetIndexAtPosition(Position);
+                    if (CurrentCellIndex != nextCellIndex)
+                    {
+                        lastCellIndex = CurrentCellIndex;
+                        CurrentCellIndex = nextCellIndex;
+                        return true;
+                    }
+                }
             }
 
-            // return if cell updated
+            lastCellIndex = default;
+            nextCellIndex = default;
+            return false;
         }
 
         private void ApplyVelocityEpsilon()
@@ -102,6 +119,7 @@ namespace BlobiShared.Physics
             }
 
             Velocity *= 1f - (DragForce * deltaTime);
+            ApplyVelocityEpsilon();
         }
 
         private bool Move(float deltaTime)
