@@ -19,14 +19,14 @@ public class GameManager : MonoBehaviour
         world = new(64, 64);
 
         entityA = world.SpawnEntity(new Vector2(0, 3.75f).To(), 1)
-        .WithBounds(true, new BlobiAABB(new Vector2(-5, -5).To(), new Vector2(5, 5).To()), 0.95f)
-        .WithDrag(true, 0.125f);
+        .WithBounds(true, new BlobiAABB(new Vector2(-5, -5).To(), new Vector2(5, 5).To()), 1.95f)
+        .WithDrag(true, 0.0625f);
 
         entityA.AddForce(new Vector2(4, 0).To());
 
         entityB = world.SpawnEntity(new Vector2(-3, 3.75f).To(), 1)
-        .WithBounds(true, new BlobiAABB(new Vector2(-5, -5).To(), new Vector2(5, 5).To()), 0.95f)
-        .WithDrag(true, 0.125f);
+        .WithBounds(true, new BlobiAABB(new Vector2(-5, -5).To(), new Vector2(5, 5).To()), 1.95f)
+        .WithDrag(true, 0.0625f);
 
         entityB.AddForce(new Vector2(-4, 0).To());
     }
@@ -41,8 +41,27 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        const float MoveForce = 9.8f;
+
         entityA.AddForce(new Vector2(0, -9.8f).To(), Time.fixedDeltaTime);
         entityB.AddForce(new Vector2(0, -9.8f).To(), Time.fixedDeltaTime);
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            entityA.AddForce(new Vector2(0, 9.8f + MoveForce).To(), Time.fixedDeltaTime);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            entityA.AddForce(new Vector2(0, -MoveForce).To(), Time.fixedDeltaTime);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            entityA.AddForce(new Vector2(-MoveForce, 0).To(), Time.fixedDeltaTime);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            entityA.AddForce(new Vector2(MoveForce, 0).To(), Time.fixedDeltaTime);
+        }
 
         world.Tick(Time.fixedDeltaTime);
 
