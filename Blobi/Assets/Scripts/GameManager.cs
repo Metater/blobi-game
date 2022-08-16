@@ -19,13 +19,13 @@ public class GameManager : MonoBehaviour
         world = new(64, 64);
 
         entityA = world.SpawnEntity(new Vector2(0, 3.75f).To(), 1)
-        .WithBounds(true, new BlobiAABB(new Vector2(-5, -5).To(), new Vector2(5, 5).To()), 1.95f)
+        .WithBounds(true, new BlobiAABB(new Vector2(-5, -5).To(), new Vector2(5, 5).To()), 0.95f)
         .WithDrag(true, 0.0625f);
 
         entityA.AddForce(new Vector2(4, 0).To());
 
         entityB = world.SpawnEntity(new Vector2(-3, 3.75f).To(), 1)
-        .WithBounds(true, new BlobiAABB(new Vector2(-5, -5).To(), new Vector2(5, 5).To()), 1.95f)
+        .WithBounds(true, new BlobiAABB(new Vector2(-5, -5).To(), new Vector2(5, 5).To()), 0.95f)
         .WithDrag(true, 0.0625f);
 
         entityB.AddForce(new Vector2(-4, 0).To());
