@@ -16,7 +16,7 @@ Stopwatch timer = Stopwatch.StartNew();
 long GetDeltaTime() => (timer.ElapsedTicks - tickStartTime) + tickCarryoverTime;
 ulong tickId = 0;
 
-while (true)
+while (true) 
 {
     if (Console.KeyAvailable)
     {
