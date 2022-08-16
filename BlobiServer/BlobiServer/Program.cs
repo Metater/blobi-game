@@ -6,6 +6,7 @@ using BlobiServer;
 Console.WriteLine("Hello, World!");
 
 BlobiNet net = new();
+Server server = new(net);
 
 long systemTicksPerSecond = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? 10_000_000L : 1_000_000_000L;
 long systemTicksPerTick = systemTicksPerSecond / 25;
@@ -44,7 +45,10 @@ while (true)
     tickId++;
 }
 
+server.Stop();
+
 void Tick(ulong tickId)
 {
     //Console.WriteLine($"Tick {tickId}: {timer.Elapsed}");
+    server.Tick(tickId);
 }

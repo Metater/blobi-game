@@ -20,12 +20,16 @@ public class BlobiNet : INetEventListener
     {
         Server = new(this);
         Processor = new();
+    }
 
-        #region Processors
+    public void SubscribeReusable<T>(Action<T> onReceive) where T : class, new()
+    {
+        Processor.SubscribeReusable(onReceive);
+    }
 
-        #endregion Processors
-
-        Server.Start(8080);
+    public void Start(int port)
+    {   
+        Server.Start(port);
     }
 
     #region NetEvents
