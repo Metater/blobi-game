@@ -3,8 +3,8 @@ namespace BlobiServer;
 public class Server
 {
     private readonly BlobiNet net;
+    private readonly BlobiWorld world;
 
-    #region Lifecycle
     public Server(BlobiNet net)
     {
         this.net = net;
@@ -19,12 +19,11 @@ public class Server
 
     public void Tick(ulong tickId)
     {
-
+        world.Tick(Constants.SPT);
     }
 
     public void Stop()
     {
 
     }
-    #endregion Lifecycle
 }

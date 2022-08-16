@@ -9,7 +9,7 @@ BlobiNet net = new();
 Server server = new(net);
 
 long systemTicksPerSecond = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? 10_000_000L : 1_000_000_000L;
-long systemTicksPerTick = systemTicksPerSecond / 25;
+long systemTicksPerTick = systemTicksPerSecond / Constants.TicksPerSecond;
 
 long tickStartTime;
 long tickCarryoverTime = 0;
