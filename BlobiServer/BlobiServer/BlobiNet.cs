@@ -35,7 +35,7 @@ public class BlobiNet : INetEventListener
     #region NetEvents
     public void OnConnectionRequest(ConnectionRequest request)
     {
-        request.AcceptIfKey("ConnectionKey");
+        request.AcceptIfKey(SharedConstants.ConnectionKey);
     }
 
     public void OnNetworkError(IPEndPoint endPoint, SocketError socketError)

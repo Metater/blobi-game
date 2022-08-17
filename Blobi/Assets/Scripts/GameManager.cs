@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         Net = new();
 
         Net.Client.Start();
-        Net.Client.Connect("localhost", 8080, "ConnectionKey");
+        Net.Client.Connect("localhost", 8080, SharedConstants.ConnectionKey);
     }
 
     private void FixedUpdate()

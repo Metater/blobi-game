@@ -2,12 +2,12 @@ namespace BlobiServer;
 
 public class Server
 {
-    private readonly BlobiNet net;
-    private readonly BlobiWorld world;
+    public BlobiNet Net { get; } = new();
+    public BlobiGame Game { get; } = new();
 
-    public Server(BlobiNet net)
+    public Server()
     {
-        this.net = net;
+
     }
 
     public void Start()
@@ -15,6 +15,11 @@ public class Server
         //net.SubscribeReusable<>
         
         net.Start(8080);
+    }
+
+    public void PollEvents()
+    {
+        Net.Server.PollEvents();
     }
 
     public void Tick(ulong tickId)

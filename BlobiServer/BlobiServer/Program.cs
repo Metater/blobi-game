@@ -5,8 +5,7 @@ using BlobiServer;
 
 Console.WriteLine("Hello, World!");
 
-BlobiNet net = new();
-Server server = new(net);
+Server server = new();
 
 long systemTicksPerSecond = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? 10_000_000L : 1_000_000_000L;
 long systemTicksPerTick = systemTicksPerSecond / Constants.TicksPerSecond;
@@ -30,14 +29,15 @@ while (true)
 
     tickStartTime = timer.ElapsedTicks;
 
-    net.Server.PollEvents();
+    server.PollEvents();
 
-    Tick(tickId);
+    //Console.WriteLine($"Tick {tickId}: {timer.Elapsed}");
+    server.Tick(tickId);
 
     while (GetDeltaTime() < systemTicksPerTick)
     {
         Thread.Sleep(1);
-        net.Server.PollEvents();
+        server.PollEvents();
     }
 
     tickCarryoverTime = GetDeltaTime() - systemTicksPerTick;
@@ -46,9 +46,3 @@ while (true)
 }
 
 server.Stop();
-
-void Tick(ulong tickId)
-{
-    //Console.WriteLine($"Tick {tickId}: {timer.Elapsed}");
-    server.Tick(tickId);
-}
