@@ -6,5 +6,5 @@ public class BlobiGame
 
     public List<BlobiPlayer> Players { get; } = new();
 
-    public 
+    public Random Random { get; } = new();
 }
