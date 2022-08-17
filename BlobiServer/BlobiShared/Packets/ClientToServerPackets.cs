@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BlobiShared.Packets
 {
-    public class UpdatePlayerNamePacket
+    public class RequestSetPlayerNamePacket
     {
         public string PlayerName { get; set; }
     }

@@ -9,8 +9,14 @@ namespace BlobiShared.Packets
         public string Message { get; set; }
     }
 
-    public class JoinAcceptPacket
+    public class JoinPacket
     {
         public uint PlayerId { get; set; }
+    }
+
+    public class SetPlayerNamePacket
+    {
+        public uint PlayerId { get; set; }
+        public string PlayerName { get; set; }
     }
 }
