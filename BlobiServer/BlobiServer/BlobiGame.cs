@@ -10,7 +10,9 @@ public class BlobiGame
 
     public Random Random { get; } = new();
 
-    public BlobiAABB WorldBounds { get; } = new BlobiAABB(new Vector2(-100, -100), new Vector2(100, 100));
+    // Constants
+    public static BlobiAABB WorldBounds { get; } = new BlobiAABB(new Vector2(-100, -100), new Vector2(100, 100));
+    public static float PlayerStartingRadius { get; } = 0.5f;
 
     public void Tick(ulong tickId)
     {
