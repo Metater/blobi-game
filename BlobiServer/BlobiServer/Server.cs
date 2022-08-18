@@ -1,3 +1,5 @@
+using BlobiShared.Packets;
+
 namespace BlobiServer;
 
 public class Server
@@ -12,9 +14,9 @@ public class Server
 
     public void Start()
     {
-        //net.SubscribeReusable<>
+        InitNet(Net);
         
-        net.Start(8080);
+        Net.Start(8080);
     }
 
     public void PollEvents()
@@ -24,11 +26,19 @@ public class Server
 
     public void Tick(ulong tickId)
     {
-        world.Tick(Constants.SPT);
+        Game.Tick(tickId);
     }
 
     public void Stop()
     {
 
+    }
+
+    private void InitNet(BlobiNet net)
+    {
+        net.SubscribeReusable<RequestSetPlayerNamePacket>((d, p) =>
+        {
+
+        });
     }
 }

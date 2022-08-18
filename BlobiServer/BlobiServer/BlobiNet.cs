@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using BlobiShared;
 using BlobiShared.Packets;
 using LiteNetLib;
 using LiteNetLib.Utils;
@@ -22,7 +23,7 @@ public class BlobiNet : INetEventListener
         Processor = new();
     }
 
-    public void SubscribeReusable<T>(Action<T> onReceive) where T : class, new()
+    public void SubscribeReusable<T>(Action<T, NetPeer> onReceive) where T : class, new()
     {
         Processor.SubscribeReusable(onReceive);
     }

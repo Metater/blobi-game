@@ -1,3 +1,5 @@
+using BlobiShared.Physics;
+
 namespace BlobiServer;
 
 public class BlobiPlayer
