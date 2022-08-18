@@ -6,6 +6,7 @@ public class Server
 {
     public BlobiNet Net { get; } = new();
     public BlobiGame Game { get; } = new();
+    public Dictionary<NetPeer, BlobiPlayer> Peers { get; } = new();
 
     public Server()
     {
@@ -13,10 +14,8 @@ public class Server
     }
 
     public void Start()
-    {
-        InitNet(Net);
-        
-        Net.Start(8080);
+    {   
+        Net.Server.Start(8080);
     }
 
     public void PollEvents()
@@ -32,13 +31,5 @@ public class Server
     public void Stop()
     {
 
-    }
-
-    private void InitNet(BlobiNet net)
-    {
-        net.SubscribeReusable<RequestSetPlayerNamePacket>((d, p) =>
-        {
-
-        });
     }
 }

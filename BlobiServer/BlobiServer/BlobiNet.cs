@@ -21,16 +21,11 @@ public class BlobiNet : INetEventListener
     {
         Server = new(this);
         Processor = new();
-    }
 
-    public void SubscribeReusable<T>(Action<T, NetPeer> onReceive) where T : class, new()
-    {
-        Processor.SubscribeReusable(onReceive);
-    }
-
-    public void Start(int port)
-    {   
-        Server.Start(port);
+        Processor.SubscribeReusable<RequestSetPlayerNamePacket>((data, peer) =>
+        {
+            
+        });
     }
 
     #region NetEvents
@@ -64,10 +59,15 @@ public class BlobiNet : INetEventListener
     {
         Console.WriteLine($"Peer {peer.Id}: Connected!");
 
+        /*
         Send(peer, new PrintPacket
         {
             Message = "Hello, Client!"
         }, DeliveryMethod.ReliableOrdered);
+        */
+
+        var player = Server.Game.NewPlayer();
+        Server.Peers.Add(peer, player);
     }
 
     public void OnPeerDisconnected(NetPeer peer, DisconnectInfo disconnectInfo)

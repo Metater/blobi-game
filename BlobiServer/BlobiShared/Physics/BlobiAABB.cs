@@ -46,5 +46,19 @@ namespace BlobiShared.Physics
                 ContainsPoint(circle.Center + new Vector2(-circle.Radius, 0)) &&
                 ContainsPoint(circle.Center + new Vector2(circle.Radius, 0));
         }
+
+        public Vector2 RandomPointInside(Random random)
+        {
+            float xSample = random.Sample();
+            float ySample = random.Sample();
+            
+            float xDelta = Max.X - Min.X;
+            float yDelta = Max.Y - Max.Y;
+
+            float xRand = Min.X + (xDelta * xSample);
+            float yRand = Min.Y + (yDelta * ySample);
+
+            return new Vector2(xRand, yRand);
+        }
     }
 }
