@@ -14,12 +14,14 @@ namespace BlobiServer;
 
 public class BlobiNet : INetEventListener
 {
-    public NetManager Server { get; private set; }
-    public NetPacketProcessor Processor { get; private set; }
+    public Server Server { get; }
+    public NetManager Manager { get; }
+    public NetPacketProcessor Processor { get; }
 
-    public BlobiNet()
+    public BlobiNet(Server server)
     {
-        Server = new(this);
+        Server = server;
+        Manager = new(this);
         Processor = new();
 
         Processor.SubscribeReusable<RequestSetPlayerNamePacket>((data, peer) =>
@@ -66,7 +68,7 @@ public class BlobiNet : INetEventListener
         }, DeliveryMethod.ReliableOrdered);
         */
 
-        var player = Server.Game.NewPlayer();
+        var player = Server.Game.NewPlayer(peer);
         Server.Peers.Add(peer, player);
     }
 
@@ -84,7 +86,7 @@ public class BlobiNet : INetEventListener
 
     public void SendToAll<T>(T packet, DeliveryMethod deliveryMethod) where T : class, new()
     {
-        Server.SendToAll(Processor.Write(packet), deliveryMethod);
+        Manager.SendToAll(Processor.Write(packet), deliveryMethod);
     }
     #endregion Sending
 }

@@ -16,7 +16,7 @@ namespace BlobiShared.Physics
         private readonly IdGen entityIdGen = new IdGen();
 
         private readonly Dictionary<uint, BlobiEntity> entities = new Dictionary<uint, BlobiEntity>();
-        private readonly Dictionary<uint, HashSet<uint>> cells = new Dictionary<uint, HashSet<uint>>();
+        private readonly Dictionary<uint, List<uint>> cells = new Dictionary<uint, List<uint>>();
 
 
         public BlobiWorld(uint cellSize, uint gridSize)
@@ -108,7 +108,7 @@ namespace BlobiShared.Physics
             }
             else
             {
-                cell = new HashSet<uint> { entityId };
+                cell = new List<uint> { entityId };
                 cells.Add(cellIndex, cell);
             }
         }

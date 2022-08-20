@@ -1,4 +1,6 @@
 using BlobiShared.Physics;
+using LiteNetLib;
+using System.Numerics;
 
 namespace BlobiServer;
 
@@ -23,9 +25,9 @@ public class BlobiGame
     public BlobiPlayer NewPlayer(NetPeer peer)
     {
         var position = WorldBounds.RandomPointInside(Random);
-        var entity = World.SpawnEntity()
+        var entity = World.SpawnEntity(position, PlayerStartingRadius);
 
-        var player = new BlobiPlayer(peer, this, BlobiEntity entity);
+        var player = new BlobiPlayer(peer, this, entity);
 
         return player;
     }

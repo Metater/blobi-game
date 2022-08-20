@@ -5,23 +5,25 @@ namespace BlobiServer;
 
 public class Server
 {
-    public BlobiNet Net { get; } = new();
+    public BlobiNet Net { get; }
     public BlobiGame Game { get; } = new();
     public Dictionary<NetPeer, BlobiPlayer> Peers { get; } = new();
 
     public Server()
     {
-        
+        Net = new(this);
+
+        Net.On
     }
 
     public void Start()
     {   
-        Net.Server.Start(8080);
+        Net.Manager.Start(8080);
     }
 
     public void PollEvents()
     {
-        Net.Server.PollEvents();
+        Net.Manager.PollEvents();
     }
 
     public void Tick(ulong tickId)
